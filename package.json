@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "setup-admin": "node service/admin/setup-admin-ui.js",
-    "setup": "node service/admin/setup-admin.js && node service/admin/setup-integration.js"
+    "setup-admin": "node service/admin/setup-profile.js",
+    "api-key": "node scripts/set-api-key.js",
+    "setup-env": "node scripts/set-env.js"
   },
   "repository": {
     "type": "git",
@@ -21,14 +22,12 @@
   "devDependencies": {
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.5",
-    "jest": "^29.7.0",
-    "supertest": "^7.0.0"
-  },
-  "dependencies": {
     "axios": "^1.8.1",
     "dotenv": "^16.4.7",
+    "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "node-fetch": "^3.3.2",
+    "supertest": "^7.0.0",
     "winston": "^3.17.0"
   }
 }
