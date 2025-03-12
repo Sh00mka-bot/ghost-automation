@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "setup-admin": "node service/admin/setup-profile.js",
+    "setup-admin": "node scripts/setup-profile.js",
     "api-key": "node scripts/set-api-key.js",
     "setup-env": "node scripts/set-env.js",
     "test.api": "jest --verbose"
