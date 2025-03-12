@@ -5,7 +5,8 @@
   "scripts": {
     "setup-admin": "node scripts/setup-profile.js",
     "api-key": "node scripts/set-api-key.js",
-    "setup-env": "node scripts/set-env.js"
+    "setup-env": "node scripts/set-env.js",
+    "test.api": "jest --verbose"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,7 @@
   "homepage": "https://github.com/Sh00mka-bot/ghost-automation#readme",
   "description": "",
   "devDependencies": {
-    "@playwright/test": "^1.50.1",
+    "@types/jest": "^29.5.14",
     "@types/node": "^22.13.5",
     "axios": "^1.8.1",
     "dotenv": "^16.4.7",
