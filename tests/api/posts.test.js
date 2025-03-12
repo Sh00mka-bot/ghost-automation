@@ -17,6 +17,8 @@ describe("Publishing post from admin panel: ", () => {
     }
   });
 
+
+
   test("Should create and publish a post", async () => {
     const payload = {
       posts: [{ title: "This is First Post", status: "published" }],
@@ -32,6 +34,9 @@ describe("Publishing post from admin panel: ", () => {
     expect(postPost.body.posts[0].title).toBe("This is First Post");
   });
 
+
+
+
   test("Should copy the Post as admin ", async () => {
     const post = await apiRequest.post(
       `/ghost/api/admin/posts/${postId}/copy/`
@@ -44,6 +49,9 @@ describe("Publishing post from admin panel: ", () => {
     expect(allPosts.body.posts[1].title).toBe("This is First Post");
   });
 
+
+
+
   test("Should retrieve the pibslished post by ID", async () => {
     const getPostById = await apiRequest.get(
       `/ghost/api/admin/posts/${postId}/`
@@ -53,8 +61,10 @@ describe("Publishing post from admin panel: ", () => {
     expect(getPostById.body.posts[0].title).toBe("This is First Post");
   });
 
+
+
+
   test("Should retrieve the pibslished post by slug", async () => {
-    console.log("SLUG is: ", slug);
     const getPostBySlug = await apiRequest.get(
       `/ghost/api/admin/posts/slug/${slug}/`
     );
@@ -62,6 +72,9 @@ describe("Publishing post from admin panel: ", () => {
     expect(getPostBySlug.body.posts[0]).toHaveProperty("slug");
     expect(getPostBySlug.body.posts[0].title).toBe("This is First Post");
   });
+
+
+
 
   test("Should update the pibslished post", async () => {
     const getPost = await apiRequest.get(`/ghost/api/admin/posts/${postId}/`);
@@ -80,6 +93,10 @@ describe("Publishing post from admin panel: ", () => {
     expect(updatePost.body.posts[0].title).toBe("Updated Post");
   });
 
+
+
+
+
   test("Should delete the pibslished post", async () => {
     const deleteByID = await apiRequest.delete(
       `/ghost/api/admin/posts/${postId}/`
@@ -91,4 +108,6 @@ describe("Publishing post from admin panel: ", () => {
     );
     expect(getDeletedPost.status).toEqual(404);
   });
+
+
 });
