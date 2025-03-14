@@ -6,8 +6,5 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 .idea/
-<<<<<<< HEAD
-.env.local
-=======
->>>>>>> fcc6bf155beb4126f78193d428519357302a85f9
+AdminLogin.json
 .env
