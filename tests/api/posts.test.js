@@ -52,7 +52,7 @@ describe("Publishing post from admin panel: ", () => {
 
 
 
-  test("Should retrieve the pibslished post by ID", async () => {
+  test("Should retrieve the published post by ID", async () => {
     const getPostById = await apiRequest.get(
       `/ghost/api/admin/posts/${postId}/`
     );
@@ -64,7 +64,7 @@ describe("Publishing post from admin panel: ", () => {
 
 
 
-  test("Should retrieve the pibslished post by slug", async () => {
+  test("Should retrieve the published post by slug", async () => {
     const getPostBySlug = await apiRequest.get(
       `/ghost/api/admin/posts/slug/${slug}/`
     );
@@ -76,7 +76,7 @@ describe("Publishing post from admin panel: ", () => {
 
 
 
-  test("Should update the pibslished post", async () => {
+  test("Should update the published post", async () => {
     const getPost = await apiRequest.get(`/ghost/api/admin/posts/${postId}/`);
     const updatedAt = getPost.body.posts[0].updated_at;
     expect(updatedAt).toBeDefined();
@@ -97,7 +97,7 @@ describe("Publishing post from admin panel: ", () => {
 
 
 
-  test("Should delete the pibslished post", async () => {
+  test("Should delete the published post", async () => {
     const deleteByID = await apiRequest.delete(
       `/ghost/api/admin/posts/${postId}/`
     );
