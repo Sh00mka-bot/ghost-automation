@@ -11,6 +11,7 @@ class NavigationPage extends HelperBase{
      * @param page is to navigate to:
      * - dashboard
      * - site
+     * - explore
      * - posts
      * - pages
      * - members
