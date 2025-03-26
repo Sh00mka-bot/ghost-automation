@@ -1,8 +1,6 @@
 import {test, expect} from '@playwright/test'
 import logger from "../../utils/logger";
 
-
-
 test('Login as Owner of the Page', async({page}) =>{
 
     logger.info("Going to Admin Page ");

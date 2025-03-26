@@ -1,6 +1,6 @@
 const NavigationPage =  require("./navigatePage")
 const ContentPage = require("./contentPage")
-import {Page} from "@playwright/test";
+const LoginPage = require("./loginPage")
 const HelperBase = require ("./helperBase")
 
 class PageManager extends HelperBase {
@@ -8,12 +8,14 @@ class PageManager extends HelperBase {
     #page
     #navigationPage
     #contentPage
+    #loginPage
 
     constructor(page) {
         super();
         this.#page = page;
         this.#navigationPage = new NavigationPage(this.#page)
         this.#contentPage = new ContentPage(this.#page)
+        this.#loginPage = new LoginPage(this.#page)
 
         Object.defineProperty(this, "#page", { writable: false });
         Object.defineProperty(this, "#navigationPage", { writable: false });
@@ -26,6 +28,10 @@ class PageManager extends HelperBase {
 
     getContentPageOptions(){
         return this.#contentPage;
+    }
+
+    getLoginPage(){
+        return this.#loginPage;
     }
 
 }
