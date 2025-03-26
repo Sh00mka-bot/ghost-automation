@@ -1,0 +1,26 @@
+[
+  {
+    "email": "admin",
+    "password": "Secure0_psswd"
+  },
+  {
+    "email": "owner@test.com",
+    "password": ""
+  },
+  {
+    "email": "admin@test.com",
+    "password": "password"
+  },
+  {
+    "email": "admin@test.com",
+    "password": " "
+  },
+  {
+    "email": " ",
+    "password": " "
+  },
+  {
+    "email": " ",
+    "password": "Secure0_psswd"
+  }
+]

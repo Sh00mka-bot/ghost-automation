@@ -1,21 +1,43 @@
 import {test, expect} from '@playwright/test'
 import logger from "../../utils/logger";
+const loginData = require('./data/login-data.json')
+const {endpoint} = require('../../config/env-loader');
+const PageManager = require("../../page-objects/pageManager")
 
-test('Login as Owner of the Page', async({page}) =>{
 
-    logger.info("Going to Admin Page ");
-    await page.goto("http://localhost:2368/ghost/signin/");
+test.describe( "Auth Regression Test Suite",()=>{
 
-    const form = page.locator(".form-group");
-    await form.getByLabel("Email address").fill("admin@test.com");
+    loginData.forEach(data => {
+        test(`Use email as ${data.email}, and password as ${data.password}`,
+            async({page, context}) =>{
 
-    await form.getByLabel("Password").fill("Secure0_psswd");
+            await context.clearCookies();
+            const pm = new PageManager(page);
 
-    await page
-        .getByRole("button", {name: "Sign in"}).click();
+            logger.info("Going to Admin Page ");
+            await page.goto(endpoint("ghost/signin/"));
 
-    const dashboard = await page.locator(".gh-dashboard .gh-canvas-title");
-    await expect(dashboard).toBeVisible();
-    await expect(dashboard).toContainText("Let’s get started!");
+            await pm.getLoginPage().loginFormFillSubmit(data.email, data.password);
+
+            await expect(page).toHaveURL(endpoint("ghost/#/signin/"))
+
+        })
+    })
+    test('Login as Owner of the Page Successfully', async({page, context}) =>{
+        await context.clearCookies();
+        const pm = new PageManager(page);
+
+        logger.info("Going to Admin Page ");
+        await page.goto(endpoint("ghost/signin/"));
+
+        await pm.getLoginPage().loginFormFillSubmit("admin@test.com","Secure0_psswd");
+
+        const dashboard = await page.locator(".gh-dashboard .gh-canvas-title");
+        await expect(dashboard).toBeVisible();
+        await expect(dashboard).toContainText("You’re all set.");
+    })
+
+
+
 
 })
