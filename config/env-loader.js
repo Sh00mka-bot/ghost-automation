@@ -16,8 +16,15 @@ if (missingVars.length > 0) {
   );
 }
 
+const BASE_URL = process.env.BASE_URL || "http://localhost:2368";
+const ADMIN_API_KEY = process.env.ADMIN_API_KEY;
+const LOG_LEVEL = process.env.LOG_LEVEL || "info";
+
 module.exports = {
-  BASE_URL: process.env.BASE_URL || "http://localhost:2368",
-  ADMIN_API_KEY: process.env.ADMIN_API_KEY,
-  LOG_LEVEL: process.env.LOG_LEVEL || "info",
+    BASE_URL,
+    ADMIN_API_KEY,
+    LOG_LEVEL,
+
+  endpoint: (path) => `${BASE_URL}/${path}`
 };
+
