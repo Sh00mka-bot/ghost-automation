@@ -8,7 +8,16 @@ class HelperBase {
 
 
     async cleanAllDataFrom(endpoint){
-        //this is going to be an api call to delete all data
+        const allData = await apiRequest.get(`/ghost/api/admin/${endpoint}/`);
+
+        if (allData.body.posts.length > 0) {
+            for (let data of allData.body.posts) {
+                await apiRequest.delete(`/ghost/api/admin/${endpoint}/${data.id}/`);
+                console.log(`Deleted ${endpoint} : ${data.id}`);
+            }
+        } else {
+            console.log(` ~ No ${endpoint} found to delete.`);
+        }
     }
 
     async erase(data){
@@ -19,6 +28,15 @@ class HelperBase {
         );
         expect(deleteByID.status).toEqual(204);
 
+    }
+
+
+    async waitForPostToBeSaved(){
+
+        const status = this.page.locator('[data-test-editor-post-status]');
+        await expect(status).toHaveText(/Saved/, { timeout: 5000 });
+
+        await this.page.waitForLoadState('networkidle');
     }
 
 

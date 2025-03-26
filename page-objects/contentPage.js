@@ -1,6 +1,5 @@
 const HelperBase = require("./HelperBase");
 const {expect} = require("@playwright/test");
-const {monitorEventLoopDelay} = require("node:perf_hooks");
 
 
 class ContentPage extends HelperBase {
@@ -37,17 +36,24 @@ class ContentPage extends HelperBase {
     }
 
 
-    async locatorPublishedContent(){
+
+
+    async publishContent() {
         const buttonPublish = this.page.locator('[data-test-button="continue"]');
-        await expect(buttonPublish).toBeVisible();
+        await buttonPublish.waitFor({ state: 'visible' });
         await buttonPublish.click();
 
         const confirm = this.page.locator('[data-test-button="confirm-publish"]');
-        await expect(confirm).toBeVisible();
+        await confirm.waitFor({ state: 'visible' });
         await confirm.click({ force: true });
 
-        return this.page.locator('[data-test-publish-flow="complete"]')
+        const published = this.page
+            .locator('[data-test-publish-flow="complete"]')
             .locator('.modal-body h2');
+
+        await published.waitFor({ state: 'visible' });
+
+        return published;
     }
 }
 
