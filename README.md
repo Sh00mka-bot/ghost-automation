@@ -33,13 +33,6 @@ This project runs both Ghost CMS and the test suite using **Docker Compose**.
 - **Auth cookie caching** to speed up UI tests
 
 ---
-
-## 📋 Test Scenarios
-
-This test suite validates core workflows in Ghost CMS:
-
- > tbd
-
 ---
 
 ## ⚙️ Project Setup
