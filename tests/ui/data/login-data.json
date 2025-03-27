@@ -20,7 +20,19 @@
     "password": " "
   },
   {
+    "email": "",
+    "password": " "
+  },
+  {
     "email": " ",
     "password": "Secure0_psswd"
+  },
+  {
+    "email": "ADMIN@TEST.COM ",
+    "password": "Secure0_psswd"
+  },
+  {
+    "email": "admin@test.com",
+    "password": "SECURE0_PSSWD"
   }
 ]
